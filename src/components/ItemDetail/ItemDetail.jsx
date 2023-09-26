@@ -8,30 +8,33 @@ const InputCount = ({ onAdd, stock, initial }) => {
     const [count, setCount] = useState(initial)
 
     const handleChange = (e) => {
-        if(e.target.value < stock) {
+        if(e.target.value <= stock) {
             setCount(e.target.value)
         }
     }
 
     return (
         <div>
-            <input type='number' onChange={handleChange} value={count}></input>
-            <button onClick={() => onAdd(count)}>Agregar al Carrito</button>
+            <input type='number' onChange={handleChange} value={count} min="1"/>
+            <button onClick={() => onAdd(count)}>Agregar al carrito</button>
         </div>
     )
 }
 
 const ButtonCount = ({ onAdd, stock, initial = 1 }) => {
     const [count, setCount] = useState(initial)
-    
+
     const increment = () => {
         if(count < stock) {
-            setCount (count + 1)
+            setCount(count + 1)
         }
+
     }
 
     const decrement = () => {
-        setCount(count - 1)
+        if(count > 1) {
+            setCount(count - 1)
+        }
     }
 
     return (

@@ -1,10 +1,8 @@
 import { useState } from "react"
 import classes from './ContactForm.module.css'
-import { useForm } from 'react-hook-form'
 
 const ContactForm = ({ createOrder }) => {
-    const{ register, formState:{errors}} =useForm()
- 
+    
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
